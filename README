@@ -31,8 +31,8 @@ To Install "dumb tar" files such as xxxxxxxxx-i686.tar.gz
 To Install   MSWindows --
     1. You will need to install three programs before installing 'NetAna'.
       a) Install Python 3.4 or later
-      b) Install Python3-Matplotlib 1.3.1 or later
-		c) Install Python3-numpy 1:1.8.1 or later
+      b) Install Python3-matplotlib 1.3.1 or later
+      c) Install Python3-numpy 1:1.8.1 or later
 
        The above versions are the one's that are compatible with Python 3.4
        Make sure the versions are the one's for your 32 bit or 64 bit system.

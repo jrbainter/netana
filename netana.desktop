@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=netana (v3.1.2)
-Comment=netana (v3.1.2)
+Name=netana (v3.1.18)
+Comment=netana (v3.1.18)
 Exec=netana/start-netana.py
 Icon=netana/doc/NetAna-t.png
 Terminal=false
