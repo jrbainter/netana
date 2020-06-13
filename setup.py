@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
-from setuptools import setup, find_packages
+import setuptools
 """ This file is used to build the 'NetAna' distrubtion.
     All files in 'examples' directory and all files defined in the MANFEST.in
     template file. """
-setup(name='netana',
+setuptools.setup(
+      name='netana',
       version = '3.1.18',
       zip_safe=True,
-      packages=find_packages(),
       include_package_data = True,
       install_requires = ['matplotlib','numpy'],
-      entry_points = { 'gui_scripts' : [ 'netana = src/startnetana.py' ] },
+      entry_points = { 'netana' : 'netana = startnetana.py' },
       scripts = ["cp-examples.sh"],
       package_data={'netana': ['examples/*', 'doc/*'],
         "" : ['netana-3.1.18-md5sums', 'netana.desktop', 'license', 'change.log']},
@@ -19,9 +19,13 @@ setup(name='netana',
       author_email= 'bainter8326@gmail.com',
       description= 'Electronic Network Analyzer',
       long_description= 'This program solves electronic AC & DC Mash and Node network equations using matrix algebra.',
+      packages=setuptools.find_packages(),
       platforms= [ 'Linux', 'MSWindows' ],
       keywords="network circuit node mash analysis",
-      license = "GPL-3 - GNU General Public License",
-      url = "https://github.com/jrbainter/netana"
+      classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent" ],
+      url = "https://github.com/jrbainter/netana.git"
       )
 
