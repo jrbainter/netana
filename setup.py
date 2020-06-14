@@ -10,7 +10,7 @@ setuptools.setup(
       zip_safe=True,
       include_package_data = True,
       install_requires = ['matplotlib','numpy'],
-      entry_points = { 'netana' : 'netana = startnetana.py' },
+      entry_points = { 'console_scripts' : ['netana = netana:startnetana'] },
       scripts = ["cp-examples.sh"],
       package_data={'netana': ['examples/*', 'doc/*'],
         "" : ['netana-3.1.18-md5sums', 'netana.desktop', 'license', 'change.log']},
