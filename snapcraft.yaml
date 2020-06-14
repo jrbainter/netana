@@ -1,0 +1,24 @@
+name: netana
+version: '3.1.18dev'
+summary: Electronic Network Analyzer
+description: |
+  This program solves electronic AC & DC Mash and Node network
+  equations using matrix algebra.
+
+base: core18
+grade: devel
+confinement: devmode
+
+apps:
+  netana:
+    command: bin/netana
+    plugs: [home]
+
+parts:
+  netana:
+    plugin: python
+    python-version: python3
+    source: .
+    stage-packages: [python3-matplotlib, python3-numpy, python3-tk]
+
+
