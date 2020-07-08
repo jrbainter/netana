@@ -1,5 +1,5 @@
 name: netana
-version: '3.1.18dev'
+version: '3.1.18'
 summary: Electronic Network Analyzer
 description: |
   This program solves electronic AC & DC Mash and Node network
@@ -19,6 +19,9 @@ parts:
     plugin: python
     python-version: python3
     source: .
-    stage-packages: [python3-matplotlib, python3-numpy, python3-tk]
-
+    stage-packages:
+      - python3-matplotlib
+      - python3-numpy
+      - python3-tk
+      
 
