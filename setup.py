@@ -1,31 +1,33 @@
 #!/usr/bin/env python3
 
-import setuptools
+from  setuptools import setup, find_packages
 """ This file is used to build the 'NetAna' distrubtion.
     All files in 'examples' directory and all files defined in the MANFEST.in
     template file. """
-setuptools.setup(
+
+setup(
       name='netana',
       version = '3.1.18',
+      packages=find_packages(),
       zip_safe=True,
       include_package_data = True,
       install_requires = ['matplotlib','numpy'],
-      entry_points = { "gui_scripts" : ["netana = src.netana:main"] },
+      entry_points = { "gui_scripts" : ["netana=main:main"]},
       scripts = ["cp-examples.sh"],
-      package_data={'netana': ['examples/*', 'doc/*'],
-        "" : ['netana-3.1.18-md5sums', 'netana.desktop', 'license', 'change.log']},
+      package_data={'netana': ['examples/*', 'doc/*',
+        'netana-3.1.18-md5sums', 'netana.desktop', 'license', 'change.log', 'copyright' ]},
       author= 'James Bainter',
       maintainer= 'James Bainter',
       author_email= 'bainter8326@gmail.com',
       description= 'Electronic Network Analyzer',
       long_description= 'This program solves electronic AC & DC Mash and Node network equations using matrix algebra.',
-      packages=setuptools.find_packages(),
-      platforms= [ 'Linux', 'MSWindows' ],
+      platforms= [ 'Linux', 'MSWindows', 'OSX' ],
       keywords="network circuit node mash analysis",
       classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent" ],
-      url = "https://github.com/jrbainter/netana.git"
+      python_requires='>=3.6',
+      url = "https://github.com/jrbainter/netana.git",
       )
 

@@ -10,7 +10,7 @@ from mkreport import MkReport
 from plotutil import matplot
 
 
-class NetAna(AnalizeSpec):
+class NetAna(Equations, AnalizeSpec, MkReport):
 	def __init__(self, master):
 		self.opt = options = {}
 		options['defaultextension']='.txt'
@@ -46,7 +46,7 @@ class NetAna(AnalizeSpec):
 		fm1 = Frame(master)
 		self.fnbtn=ttk.Button(fm1,text='Enter Spec. File Name', command=self.getspecfn)
 		self.fnbtn.grid(row=0,column=0, sticky=E+W,padx=5,pady=5)
-		self.equbtn=ttk.Button(fm1,text='Enter Network Equations', command=self.getequ)
+		self.equbtn=ttk.Button(fm1,text='Enter Network Equations', command=self.getequations)
 		self.equbtn.grid(row=0, column=1, sticky=E+W,padx=5,pady=5)
 
 		self.analbtn=ttk.Button(fm1,text='Analize Network',command=self.mkreport)
@@ -78,7 +78,7 @@ class NetAna(AnalizeSpec):
 		self.XCompDict={}
 		self.btnctrl(['disabled','!disabled','disabled','disabled'])
 
-	def getequ(self):
+	def getequations(self):
 		AnalizeSpec.analize(self)
 		Equations.getequ(self)
 		self.btnctrl(['!disabled','disabled','!disabled','disabled'])
@@ -114,7 +114,8 @@ class NetAna(AnalizeSpec):
 		self.analbtn.state([blist[2]])
 		self.plotbtn.state([blist[3]])
 
-def main():
+
+def main():      # NetAna startup function
 	root = Tk()
 	root.title('NetAna')
 	root.geometry('+100+200')

@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showerror
 
-class DisReport:
+class DisReport():
 	def __init__(self,parent,filename,lable=None):
 		self.parent=parent
 		self.top = parent

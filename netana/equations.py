@@ -1,27 +1,9 @@
-
 from griddialog import *
 from wequ import wequ
 import pickle
 from tkinter.messagebox import showerror
 
-class Equations:
-	def __init__(self,parent):
-		self.parent = parent
-
-	def getequ(self):
-		# Build Grid Table and get Equations
-		if os.path.exists(self.EquFileName):
-			self.RestoreEquations()
-			dig = GridDialog(self.parent,self.Mat,collab=self.AnalType)
-			self.cleanup(dig)
-		elif os.path.exists(self.NetFileName):
-			self.Mat = wequ(self.NetFileName)
-			dig = GridDialog(self.parent,self.Mat,collab=self.AnalType)
-			self.cleanup(dig)
-		else:
-			dig = GridDialog(self.parent,size=self.Nodes,collab=self.AnalType)
-			self.cleanup(dig)
-
+class Equations():
 
 	def cleanup(self,dig):
 		if dig.status == "Save":
@@ -37,6 +19,21 @@ class Equations:
 	def RestoreEquations(self):
 		if os.path.exists(self.EquFileName):
 			self.Mat=pickle.load(open(self.EquFileName,'rb'))
+
+
+	def getequ(self):
+		# Build Grid Table and get Equations
+		if os.path.exists(self.EquFileName):
+			self.RestoreEquations()
+			dig = GridDialog(self.parent,self.Mat,collab=self.AnalType)
+			self.cleanup(dig)
+		elif os.path.exists(self.NetFileName):
+			self.Mat = wequ(self.NetFileName)
+			dig = GridDialog(self.parent,self.Mat,collab=self.AnalType)
+			self.cleanup(dig)
+		else:
+			dig = GridDialog(self.parent,size=self.Nodes,collab=self.AnalType)
+			self.cleanup(dig)
 
 
 

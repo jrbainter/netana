@@ -1,10 +1,10 @@
 import os
 from tkinter.messagebox import showerror
-from equations import *
+from equations import Equations
 from mkreport import MkReport
 
 
-class AnalizeSpec(Equations,MkReport):
+class AnalizeSpec():
 
 	MashNodeError = "Mashs or Nodes must be defined"
 

@@ -25,7 +25,7 @@ fi
 
 echo "Copying example files to $userdir "
 cp $srcdir/* $userdir/
-
+cd $userdir
 exit 0
 
 
