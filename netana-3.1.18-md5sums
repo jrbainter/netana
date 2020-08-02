@@ -3,7 +3,7 @@ a7aa4524b0cec46f4aa13013b5102bd8  netana/disreport.py
 8ccdf0a8cb3197d6acb850afcda8a5c3  netana/equations.py
 8b4002520e7826d3bad4a99a0ef4b0dc  netana/griddialog.py
 d41d8cd98f00b204e9800998ecf8427e  netana/__init__.py
-0843c24f22bfdf0ac0d6f4409bf3209c  netana/main.py
+04ceb941190d67a00d0d42de28f1cc0d  netana/main.py
 2260a8b379e890395cb0aaa32d6a3fe9  netana/mkreport.py
 0c707862641d67056daf2d394e8f3b80  netana/netana.py
 f049524e74c3000f442553e01f8381fd  netana/plotutil.py
