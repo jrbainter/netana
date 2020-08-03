@@ -2,9 +2,7 @@ name: netana
 version: '3.1.18'
 summary: Electronic Network Analyzer
 description: |
-  This pro    environment:
-      PATH: ${SNAP}/usr/bin:${PATH}
-      PYTHONPATH: ${SNAP}/usr/lib/python3.6gram solves electronic AC & DC Mash and Node network
+  This program solves electronic AC & DC Mash and Node network
   equations using matrix algebra.
 
 base: core20
@@ -13,9 +11,6 @@ confinement: devmode
 
 apps:
   netana:
-#    environment:
-#      PATH: ${SNAP}/usr/bin:${PATH}
-#      PYTHONPATH: ${SNAP}/usr/lib/python3.8
   command: bin/main.py
   plugs: [home]
 
@@ -30,7 +25,7 @@ parts:
        - python3-numpy
     plugin: dump
     organize:
-      "*.py" : bin/
+      "*" : bin/
 
     
 
