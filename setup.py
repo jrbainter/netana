@@ -7,15 +7,15 @@ from  setuptools import setup, find_packages
 
 setup(
       name='netana',
-      version = '3.1.18',
+      version = '3.2.0',
       packages=find_packages(),
       zip_safe=True,
       include_package_data = True,
-      install_requires = ['pyton3-tk','python3-matplotlib','python3-numpy'],
+      install_requires = ['pyton3-tk','python3-matplotlib',],
       entry_points = { "gui_scripts" : ["netana=main:main"]},
       scripts = ["cp-examples.sh"],
       package_data={'netana': ['examples/*', 'doc/*',
-        'netana-3.1.18-md5sums', 'netana.desktop', 'license', 'change.log', 'copyright' ]},
+        'netana-3.2.0-md5sums', 'netana.desktop', 'license', 'change.log', 'copyright' ]},
       author= 'James Bainter',
       maintainer= 'James Bainter',
       author_email= 'bainter8326@gmail.com',

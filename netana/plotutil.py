@@ -1,20 +1,8 @@
-#!/usr/bin/env python3
 # Python Module to plot the DC/AC Network Response
 
 import os,sys,time
-# the following lines where commented out as of
-# netana version 1.0.1 dated 05 May 2014
+import matplotlib.pyplot as plt
 
-# Next two lines are very Important in order to keep the plot window
-# from freezing!!!
-#from matplotlib import use
-#if sys.platform[:5] == 'linux' :
-	#use('GTKAgg')  # setup plotting backend for linux os
-#else:
-	#use('WXAgg')  # setup plotting backend for win32 os
-
-from matplotlib import pyplot as plt
-import numpy as np
 
 def matplot(fn='',units='Hz',ylab=None):
 
@@ -35,7 +23,14 @@ def matplotdc(fn='', ylab='None'):
 		xlab = 'Mash Number'
 
 	# Get data from the report data file.
-	mag = np.genfromtxt(fn,usecols=2,skip_footer=1)
+	mag = []
+	with open(fn,'r') as datafile:
+		for line in datafile:
+			if line[0] in ['#', 'G'] or len(line) < 5 :
+				continue
+			else:
+				sl = line.split()
+				mag.append(float(sl[2]))
 
 	# Get basename of report file
 	bfn = os.path.basename(fn)
@@ -51,7 +46,7 @@ def matplotdc(fn='', ylab='None'):
 	ts = time.ctime()
 	plt.figtext(0.02,0.015,ts,fontsize=7, ha='left')
 	plt.show()
-
+	plt.close('all')
 
 def matplotac(fn="",units='Hz'):
 	"""
@@ -71,8 +66,19 @@ def matplotac(fn="",units='Hz'):
 
 
 	# Get data from the report data file.
-	data = np.genfromtxt(fn,usecols=(0,1,2),skip_footer=1)
-	freq,mag,pa = data[:,0], data[:,1], data[:,2]
+	freq = []
+	mag = []
+	pa = []
+	with open(fn, 'r') as datafile:
+		for line in datafile:
+			if line[0] in ['#', 'G'] or len(line) < 5 :
+				continue
+			else:
+				sl = line.split()
+				freq.append(float(sl[0]))
+				mag.append(float(sl[1]))
+				pa.append(float(sl[2]))
+					
 
 	plt.figure(1)
 	plt.subplot(211)
@@ -93,6 +99,7 @@ def matplotac(fn="",units='Hz'):
 	ts = time.ctime()
 	plt.figtext(0.02,0.015,ts,fontsize=7, ha='left')
 	plt.show()
+	plt.close('all')
 
 
 if __name__ == "__main__":
