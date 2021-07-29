@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 # Python Module to plot the DC/AC Network Response
 
 import os,sys,time
@@ -78,7 +79,7 @@ def matplotac(fn="",units='Hz'):
 				freq.append(float(sl[0]))
 				mag.append(float(sl[1]))
 				pa.append(float(sl[2]))
-					
+
 
 	plt.figure(1)
 	plt.subplot(211)
@@ -104,11 +105,11 @@ def matplotac(fn="",units='Hz'):
 
 if __name__ == "__main__":
 
-	os.chdir('/home/jim/test')
+	os.chdir('/home/jim/netana-examples')
 
 	matplot("Wein_Bridge.report", "Hz")
-##	matplot("BalencedTeeNetwork.report", "Hz")
-##	matplot(fn="Bal_RC_Bridge.report", units="Hz")
-##	matplot(fn="BainterFilter.report", units="Hz")
+	matplot("BalencedTeeNetwork.report", "Hz")
+	matplot(fn="Bal_RC_Bridge.report", units="Hz")
+	matplot(fn="BainterFilter.report", units="Hz")
 	matplot(fn="LadderNode10.report", ylab="Volts")
 	matplot(fn="LadderMash9.report", ylab="Amps")
