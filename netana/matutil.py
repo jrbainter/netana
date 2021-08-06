@@ -37,7 +37,11 @@ def evalmat(mat):
 def insertmat(mat, data, offset):
     """ Function to insert one Matrix (1,m) (data) in another Matrix (n,m) (mat)
         at location 'offset' and return the resulting Matrix (res).
-        The lenght of "data" must be the same as the number of rows in  "mat". """
+        The lenght of "data" must be the same as the number of rows in  "mat";
+        else an Assert Error exception will be issued. An exception will also
+        be issued if the offset is out of range."""
+    assert(len(mat) == len(data)), "insertmat: mat and data lenghts not the same."
+    assert(offset >= 0 and offset < len(mat)-1), "insert: offset out of range"
     res = []
     for row in range(len(mat)):
         res.append(mat[row][:])       # insert matrix orignal data
@@ -208,4 +212,4 @@ if __name__ == "__main__":
     if ans == 0: PF = "Pass"
     print ('numpy ans = {:f}, {:s}'.format(ans, PF))
     print ('Time = {:.4f} ms.'.format(1000*(stop-start)))
-    
+
