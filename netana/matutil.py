@@ -41,7 +41,7 @@ def insertmat(mat, data, offset):
         else an Assert Error exception will be issued. An exception will also
         be issued if the offset is out of range."""
     assert(len(mat) == len(data)), "insertmat: mat and data lenghts not the same."
-    assert(offset >= 0 and offset < len(mat)-1), "insert: offset out of range"
+    assert(offset >= 0 and offset < len(mat)), "insert: offset out of range"
     res = []
     for row in range(len(mat)):
         res.append(mat[row][:])       # insert matrix orignal data
