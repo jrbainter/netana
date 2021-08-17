@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 from tkinter import *
 import math,cmath,time
 from tkinter.messagebox import showerror
 from disreport import DisReport
-from matutil import insertmat, evalmat
-
+import numpy as np
 
 class MkReport():
 	""" class MkReport is a continuation of the NetAna application.
@@ -54,7 +52,8 @@ class MkReport():
 					print("# Report file created: {:s} {:s}".format(self.ReportFile, lend), file=self.ofile)
 					self.DoDCAnalysis('VG')
 
-		self.ofile.close() # done writing to output file
+			self.ofile.close() # done writing to output file
+
 		# Show Report
 		DisReport(self.parent, self.ReportFile)
 
@@ -71,11 +70,9 @@ class MkReport():
 		elif 'VGLIST' in self.NetDict:
 			m = self.NetDict['VGLIST']
 		else:
-			#m = bldmat(1,self.Nodes,0)
-			# Build list of of zeros, one per Node
-			m = [0]*self.Nodes
+			m = np.zeros(self.Nodes, dtype=(np.complex128))
 			# Input 'VG' or 'IG'
-			m[0] = self.NetDict[source]
+			m[0] = np.array(self.NetDict[source], dtype=(np.complex128))
 
 		print('##### Units = {:s} {:s}'.format(dLab, '####\n'), file=self.ofile)
 		try:
@@ -88,11 +85,11 @@ class MkReport():
 			# Print Header
 			self.FreqUnits = flab # Save freq. units
 			s1 = " "*7; s2= " "*4
-			print('# Frequency({:s}){:s}Magnitude(db){:s}Phase Angle(deg)'.format(flab,s1,s2), file=self.ofile)
-			Tauj = 2*math.pi*1j
+			print('# Frequency{:s}{:s}Magnitude(db){:s}Phase Angle(deg)'.format(flab,s1,s2), file=self.ofile)
+			two_pij = 2*math.pi*1j
 			for freq in self.genfreq(fstart, fstop, finc):
 				print("{:10.2f}".format(freq), file=self.ofile, end="")
-				tox = Tauj*freq
+				tox = two_pij*freq
 				for n in range(self.Nodes):   # Do all nodes
 					# Convert reactive components to reactances
 					for key in self.XCompDict:
@@ -100,10 +97,12 @@ class MkReport():
 							self.NetDict[key] = self.XCompDict[key] * tox
 					# Convert Equation string to values
 					self.matvalues = self.EvalEqu(self.Mat)
+					npmat = np.array(self.matvalues, dtype=(np.complex128)) # convert to ndarray (complex)
 					# Solve for all voltages or currents.
-					determ = insertmat(self.matvalues,m,n)
-					num = evalmat(determ)
-					dem = evalmat(self.matvalues)
+					determ = npmat.copy() # make a copy of np.mat
+					determ[:,n] = m		# Insert m at column n
+					num = np.linalg.det(determ)
+					dem = np.linalg.det(npmat)
 					res = num/dem
 					res_key = uLab.upper()+str(n+1)
 					self.NetDict[res_key] = res
@@ -140,16 +139,16 @@ class MkReport():
 		elif 'VGLIST' in self.NetDict:
 			m = self.NetDict['VGLIST']
 		else:
-			#m = bldmat(1,self.Nodes,0)	# Build Matrix
-			# Build list of of zeros, one per Node
-			m = [0]*self.Nodes
+			m = np.zeros(self.Nodes,dtype=(np.float64))
 			m[0] = self.NetDict[source]
 
-		dem = evalmat(self.matvalues)
+		npmat = np.array(self.matvalues, dtype=np.float64)
+		dem = np.linalg.det(npmat)
 		print('#### Units ={:s} {:s}'.format(dLab,'####\n'), file=self.ofile)
 		for n in range(self.Nodes):
-			determ = insertmat(self.matvalues,m,n)
-			num = evalmat(determ)
+			determ = npmat.copy()
+			determ[:,n] = m
+			num = np.linalg.det(determ)
 			res = num/dem
 			reskey = uLab.upper()+str(n+1)
 			self.NetDict[reskey] = res
@@ -185,7 +184,13 @@ class MkReport():
 				except:
 					self.showerror("error","Equation Syntax Error row = {:s} col = {:s}".format(r,c))
 			res.append(temp)
-		return res
+
+		if self.AcDc == 'AC':
+			npres = np.array(res, dtype=np.complex128)
+		else:
+			npres = np.array(res, dtype=np.float64)
+		return npres
+
 
 	def SaveCompValues(self):
 		for key in self.NetDict:

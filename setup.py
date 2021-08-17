@@ -11,7 +11,7 @@ setup(
       packages=find_packages(),
       zip_safe=True,
       include_package_data = True,
-      install_requires = ['pyton3-tk','python3-matplotlib',],
+      install_requires = ['pyton3-tk','matplotlib',],
       entry_points = { "gui_scripts" : ["netana=main:main"]},
       scripts = ["cp-examples.sh"],
       package_data={'netana': ['examples/*', 'doc/*',
