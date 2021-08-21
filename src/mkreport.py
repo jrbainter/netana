@@ -10,6 +10,9 @@ class MkReport():
 	"""
 	def __init_(self,parent):
 		self.parent = parent
+		self.lfreq = []  # Save values for plotting
+		self.lmag = []
+		self.lpa = []
 
 	def mkreport(self):
 		try:
@@ -88,6 +91,7 @@ class MkReport():
 			print('# Frequency{:s}{:s}Magnitude(db){:s}Phase Angle(deg)'.format(flab,s1,s2), file=self.ofile)
 			two_pij = 2*math.pi*1j
 			for freq in self.genfreq(fstart, fstop, finc):
+				self.lfreq.append(freq)  # Save freq for plotting
 				print("{:10.2f}".format(freq), file=self.ofile, end="")
 				tox = two_pij*freq
 				for n in range(self.Nodes):   # Do all nodes
@@ -121,7 +125,9 @@ class MkReport():
 					# if it is set it to small value
 					if abs(tf) < 1.0e-6: tf = complex(1.0e-30, 0.0)
 					mag = 20.0*math.log10(abs(tf))
+					self.lmag.append(mag)  # Save nag for plotting
 					angle = math.degrees(cmath.phase(tf))
+					self.lpa.append(angle)  # Save for plotting
 					print("{:+20.4f}{:+20.4f}".format(mag, angle ),\
 						file=self.ofile)
 
@@ -144,15 +150,14 @@ class MkReport():
 
 		npmat = np.array(self.matvalues, dtype=np.float64)
 		dem = np.linalg.det(npmat)
+		ans = np.linalg.solve(npmat,m)
+		res = list(ans)
 		print('#### Units ={:s} {:s}'.format(dLab,'####\n'), file=self.ofile)
 		for n in range(self.Nodes):
-			determ = npmat.copy()
-			determ[:,n] = m
-			num = np.linalg.det(determ)
-			res = num/dem
 			reskey = uLab.upper()+str(n+1)
-			self.NetDict[reskey] = res
-			print('{:s}{:d} = {:g}'.format(uLab,n+1,res), file=self.ofile)
+			self.NetDict[reskey] = res[n]
+			print('{:s}{:d} = {:g}'.format(uLab,n+1,res[n]), file=self.ofile)
+			self.lmag.append(res[n]) # Save mag fpr plotting
 
 		# Write GOALS to Report File
 		if 'GOALS' in self.NetDict:

@@ -21,6 +21,9 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.bld_menu(master)
 		self.bld_widgets(master)
 		self.parent=master
+		self.lfreq = []
+		self.lmag = []
+		self.lpa = []
 
 	def bld_menu(self, master):
 		mBar = Menu(master, relief='groove', borderwidth=5)
@@ -89,13 +92,14 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 
 	def plot(self):
 		if  self.AcDc == "AC" :   # Plot AC Response
-			matplot(fn=self.ReportFile, units=self.FreqUnits,ylab=None)
+			matplot(units=self.FreqUnits,ylab=None,
+				plotdata = (self.FileBaseName,self.lfreq, self.lmag, self.lpa))
 		else:  # Plot DC Response
 			if self.AnalType == 'Node':
 				ylabel = 'Volts'
 			else:
 				ylabel = 'Amps'
-			matplot(fn=self.ReportFile, units='',ylab=ylabel)
+			matplot(units='',ylab=ylabel, plotdata=(self.FileBaseName,self.lmag)
 
 	def helpdoc(self,event=None):
 		prog_dir = os.path.dirname(sys.argv[0])

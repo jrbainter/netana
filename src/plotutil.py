@@ -5,38 +5,26 @@ import os,sys,time
 import matplotlib.pyplot as plt
 
 
-def matplot(fn='',units='Hz',ylab=None, plotdata=None):
+def matplot(units='Hz',ylab=None, plotdata=None):
 
 	if ylab != None :
-		matplotdc(fn,ylab,data=plotdata)
+		matplotdc(ylab,data=plotdata)
 	else:
-		matplotac(fn,units,data=plotdata)
+		matplotac(units,data=plotdata)
 
 
-def matplotdc(fn, ylab,data):
+def matplotdc(ylab,data):
 	""" This module formats the commands Matplotlib
 	to plot the DC network valuse of a circuit. The only
-	parameters required are the filename and the Y axis label.
+	parameters required are the Y axis label amd the plot data.
+	Plot data contains filename and magnitude data.
 	"""
 	if ylab == 'Volts':
 		xlab = 'Node Number'
 	else:
 		xlab = 'Mash Number'
 
-	# Get data from the report data file.
-	mag = []
-	with open(fn,'r') as datafile:
-		for line in datafile:
-			if line[0] in ['#', 'G'] or len(line) < 5 :
-				continue
-			else:
-				sl = line.split()
-				#mag.append(float(sl[2]))
-				mag = data
-
-	# Get basename of report file
-	bfn = os.path.basename(fn)
-	name = bfn[:bfn.find('.')] + '\n'
+	name,mag = data
 	plt.title(name)
 	plt.ylabel(ylab)
 	plt.xlabel(xlab)
@@ -50,40 +38,23 @@ def matplotdc(fn, ylab,data):
 	plt.show()
 	plt.close('all')
 
-def matplotac(fn,units,data):
+def matplotac(units,data):
 	"""
 	This module formats the commands required by Matplotlib
 	to plot the network analysis response/tansfer fuction
 	of an AC network where the output report contains three cols of
 	data in the following order: frequency, magnitude (dB),
-	and phase angle (degrees).
+	and phase angle (degrees). The computed data is passed to this functions.
 
-	This function "matplotac" is called with file name of the data file
-	to be plotted and the frequency units string such as Hz, Kz, Mz).
-	The units argument defaults to 'Hz'.
+	This function "matplotac" is called with string such as Hz, Kz, Mz)
+	and filename,frequency, magnitude, and phahase angle data.
 
-	call as follows:  plotutil.matplotac(fn, units='Hz')
+	call as follows:  plotutil.matplotac(units='Hz', data)
 	"""
 
-
-
-	# Get data from the report data file.
-	with open(fn, 'r') as datafile:
-		for line in datafile:
-			if line[0] in ['#', 'G'] or len(line) < 5 :
-				continue
-			else:
-				sl = line.split()
-				#freq.append(float(sl[0]))
-				#mag.append(float(sl[1]))
-				#pa.append(float(sl[2]))
-				freq, mag, pa = data
-
+	name, freq, mag, pa = data
 	plt.figure(1)
 	plt.subplot(211)
-	# Get basename of report file
-	bfn = os.path.basename(fn)
-	name = bfn[:bfn.find('.')] + '\n'
 	plt.title(name)
 	plt.ylabel('Gain (db)')
 	plt.grid(True)
