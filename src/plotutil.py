@@ -5,15 +5,15 @@ import os,sys,time
 import matplotlib.pyplot as plt
 
 
-def matplot(fn='',units='Hz',ylab=None):
+def matplot(fn='',units='Hz',ylab=None, plotdata=None):
 
 	if ylab != None :
-		matplotdc(fn,ylab)
+		matplotdc(fn,ylab,data=plotdata)
 	else:
-		matplotac(fn,units)
+		matplotac(fn,units,data=plotdata)
 
 
-def matplotdc(fn='', ylab='None'):
+def matplotdc(fn, ylab,data):
 	""" This module formats the commands Matplotlib
 	to plot the DC network valuse of a circuit. The only
 	parameters required are the filename and the Y axis label.
@@ -31,7 +31,8 @@ def matplotdc(fn='', ylab='None'):
 				continue
 			else:
 				sl = line.split()
-				mag.append(float(sl[2]))
+				#mag.append(float(sl[2]))
+				mag = data
 
 	# Get basename of report file
 	bfn = os.path.basename(fn)
@@ -49,7 +50,7 @@ def matplotdc(fn='', ylab='None'):
 	plt.show()
 	plt.close('all')
 
-def matplotac(fn="",units='Hz'):
+def matplotac(fn,units,data):
 	"""
 	This module formats the commands required by Matplotlib
 	to plot the network analysis response/tansfer fuction
@@ -67,19 +68,16 @@ def matplotac(fn="",units='Hz'):
 
 
 	# Get data from the report data file.
-	freq = []
-	mag = []
-	pa = []
 	with open(fn, 'r') as datafile:
 		for line in datafile:
 			if line[0] in ['#', 'G'] or len(line) < 5 :
 				continue
 			else:
 				sl = line.split()
-				freq.append(float(sl[0]))
-				mag.append(float(sl[1]))
-				pa.append(float(sl[2]))
-
+				#freq.append(float(sl[0]))
+				#mag.append(float(sl[1]))
+				#pa.append(float(sl[2]))
+				freq, mag, pa = data
 
 	plt.figure(1)
 	plt.subplot(211)
@@ -103,13 +101,3 @@ def matplotac(fn="",units='Hz'):
 	plt.close('all')
 
 
-if __name__ == "__main__":
-
-	os.chdir('/home/jim/netana-examples')
-
-	matplot("Wein_Bridge.report", "Hz")
-	matplot("BalencedTeeNetwork.report", "Hz")
-	matplot(fn="Bal_RC_Bridge.report", units="Hz")
-	matplot(fn="BainterFilter.report", units="Hz")
-	matplot(fn="LadderNode10.report", ylab="Volts")
-	matplot(fn="LadderMash9.report", ylab="Amps")

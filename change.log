@@ -2,11 +2,11 @@
 change.log for netana
 
 version 3.2.0
-	date July  27, 2021
-	1) 	Removed Python3-numpy dependency, a bit slower now but
-		pure Python.
-	2)	Revised Plotutily.py to use Python Lists to get date from
-		reports.
+	date August 19, 2021
+	1) Added more numpy function calls to mkreport.py in order to no longer
+           need python module matutil.py.    
+	2) Revised plotutily.py to use Python Lists to get plot data from
+	   reports.
 
 version 3.1.18
 	date May 30, 2017
