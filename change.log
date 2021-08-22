@@ -2,11 +2,12 @@
 change.log for netana
 
 version 3.2.0
-	date August 19, 2021
+	date August 22, 2021
 	1) Added more numpy function calls to mkreport.py in order to no longer
-           need python module matutil.py.    
-	2) Revised plotutily.py to use Python Lists to get plot data from
-	   reports.
+           need python module bldmat.py and matutil.py.    
+	2) Revised netana.py and plotutily.py to use computed values instead of
+	   getting the printed data in the report files. Also the project spec file
+	   name is now used as the title of the plot.
 
 version 3.1.18
 	date May 30, 2017

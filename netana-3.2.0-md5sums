@@ -5,7 +5,7 @@ a7aa4524b0cec46f4aa13013b5102bd8  src/disreport.py
 d41d8cd98f00b204e9800998ecf8427e  src/__init__.py
 60cbdc22d2b5131e74b17862aba4531f  src/main.py
 2d2df66c28719f467db36ac923089394  src/mkreport.py
-07cc096dee279bbc0b679271fb5e998a  src/netana.py
+4d82e1de41b06d68896103dcfe35c55b  src/netana.py
 764c5b5b667c0f001280fa345fbd0b26  src/plotutil.py
 6809b8000ec4ccdcd3f4bc2e3c4f9978  src/setup.py
 2f7b89a2ec805388a303bd9171a2d0ff  src/test.py
