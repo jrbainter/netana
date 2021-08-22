@@ -17,7 +17,6 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		options['filetypes']=[('text files', '.txt')]
 		options['parent']=master
 		options['title']='Get File Name'
-
 		self.bld_menu(master)
 		self.bld_widgets(master)
 		self.parent=master
@@ -93,13 +92,13 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 	def plot(self):
 		if  self.AcDc == "AC" :   # Plot AC Response
 			matplot(units=self.FreqUnits,ylab=None,
-				plotdata = (self.FileBaseName,self.lfreq, self.lmag, self.lpa))
+				plotdata = (self.BaseFileName,self.lfreq, self.lmag, self.lpa))
 		else:  # Plot DC Response
 			if self.AnalType == 'Node':
 				ylabel = 'Volts'
 			else:
 				ylabel = 'Amps'
-			matplot(units='',ylab=ylabel, plotdata=(self.FileBaseName,self.lmag)
+			matplot(units='',ylab=ylabel, plotdata=(self.BaseFileName,self.lmag))
 
 	def helpdoc(self,event=None):
 		prog_dir = os.path.dirname(sys.argv[0])
