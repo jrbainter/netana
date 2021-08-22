@@ -67,6 +67,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 	def getspecfn(self):
 		file=tfd.askopenfilename(**self.opt)
 		self.FileName=file
+		self.ProjectName=os.path.basename(file)
 		self.BaseFileName=file[:-4]
 		self.EquFileName = self.BaseFileName + '.equ'
 		self.ReportFile= self.BaseFileName + '.report'
@@ -92,13 +93,13 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 	def plot(self):
 		if  self.AcDc == "AC" :   # Plot AC Response
 			matplot(units=self.FreqUnits,ylab=None,
-				plotdata = (self.BaseFileName,self.lfreq, self.lmag, self.lpa))
+				plotdata = (self.ProjectName,self.lfreq, self.lmag, self.lpa))
 		else:  # Plot DC Response
 			if self.AnalType == 'Node':
 				ylabel = 'Volts'
 			else:
 				ylabel = 'Amps'
-			matplot(units='',ylab=ylabel, plotdata=(self.BaseFileName,self.lmag))
+			matplot(units='',ylab=ylabel, plotdata=(self.ProjectName,self.lmag))
 
 	def helpdoc(self,event=None):
 		prog_dir = os.path.dirname(sys.argv[0])
