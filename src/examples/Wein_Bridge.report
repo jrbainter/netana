@@ -1,13 +1,13 @@
 # Analysis Created by 'NetAna'.
-# AC Node Analysis of file: /home/jim/netana/netana/netana/examples/Wein_Bridge.txt
-# Report file created: /home/jim/netana/netana/netana/examples/Wein_Bridge.report 
-# Date Created: Mon Aug  9 16:06:59 2021
+# AC Node Analysis of file: /home/jim/netana/netana/src/examples/Wein_Bridge.txt
+# Report file created: /home/jim/netana/netana/src/examples/Wein_Bridge.report 
+# Date Created: Sun Aug 22 13:19:07 2021
 #
 
 
 ##### Units = Volts ####
 
-# Frequency(HZ)       Magnitude(db)    Phase Angle(deg)
+# FrequencyHZ       Magnitude(db)    Phase Angle(deg)
     830.00             -9.6104             +7.1589
     840.00             -9.6020             +6.7007
     850.00             -9.5942             +6.2479
