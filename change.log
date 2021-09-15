@@ -8,6 +8,8 @@ version 3.2.0
 	2) Revised netana.py and plotutily.py to use computed values instead of
 	   getting the printed data in the report files. Also the project spec file
 	   name is now used as the title of the plot.
+	3) added file 'mknetf' to make a net connecting list thaty can be used
+	   for better documation of project.
 
 version 3.1.18
 	date May 30, 2017
