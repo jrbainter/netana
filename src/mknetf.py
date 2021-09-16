@@ -1,18 +1,16 @@
 #! /usr/bin/env python3
 
-def wnet(fn,mat):
+def mknetf(fn,mat):
 
 	""" This module will write a net file "fn" containing
-	components and node connection specifications. It will
-	output the matrix equations and component connections compatable
-        with the wequ.py specification.
-
+	equiations and node connection specifications.
+	Output: the matrix equations and component connections. 
 	Format of the 'net data file example of one line:
-		c1+y1+A*ya,3,4   equation, node 3, mutual (adjacent node 4
+		c1+y1+A*ya,3,4   equation, node 3, mutual node 4
 		A zero in the third column refers to common or ground.
-	Input: fillename(fn) and square matrix od equatioon strings and
+	Input: fillename(fn) and square matrix of equation strings and
 		zero strings('0') repreesenting NO equation. 
-	Output: file of node/mask equations and connections."""
+	Output: File(fn) of node/mask equations and connections."""
 
 	sz = len(mat)
 	with open(fn, 'w') as outf:
@@ -36,6 +34,6 @@ if __name__ == "__main__":
            ['d1','0','0','m4','y5']]
 
     fn = "./test.net"
-    wnet(fn,mat)
+    mknetf(fn,mat)
 
     
