@@ -8,8 +8,8 @@ def getnet(fn):
 	data file example of one line:
 		c1+y1+A*ya,3,4   equation, node 3, mutual (adjacent node 4
 		A zero in the third column refers to common or ground.
-	input: fn = filename of net file (connection list)
-	output: square matrix (list of lists) of size equal number of
+	Input: fn = filename of net file (connection list)
+	Output: square matrix (list of lists) of size equalto the number of
 	voltage nodes."""
 
 	with open(fn, 'r') as equfile:

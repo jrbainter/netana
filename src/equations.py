@@ -1,5 +1,6 @@
 from griddialog import *
-from wequ import wequ
+from getnet import getnet 
+from mknetf import mknetf
 import pickle
 from tkinter.messagebox import showerror
 
@@ -14,6 +15,7 @@ class Equations():
 	def SaveEquations(self):
 		# Save Mat Equations to file
 		if len(self.Mat) > 1:	# if it has been defined
+			mknetf(self.NetFileName,self.Mat)
 			pickle.dump(self.Mat, open(self.EquFileName ,'wb'))
 
 	def RestoreEquations(self):
@@ -26,14 +28,14 @@ class Equations():
 		if os.path.exists(self.EquFileName):
 			self.RestoreEquations()
 			dig = GridDialog(self.parent,self.Mat,collab=self.AnalType)
-			self.cleanup(dig)
 		elif os.path.exists(self.NetFileName):
-			self.Mat = wequ(self.NetFileName)
+			self.Mat = getnet(self.NetFileName)
 			dig = GridDialog(self.parent,self.Mat,collab=self.AnalType)
-			self.cleanup(dig)
 		else:
 			dig = GridDialog(self.parent,size=self.Nodes,collab=self.AnalType)
-			self.cleanup(dig)
+		
+		# Always clean up
+		self.cleanup(dig)
 
 
 

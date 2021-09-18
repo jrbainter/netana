@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+import os, time
+
 def mknetf(fn,mat):
 
 	""" This module will write a net file "fn" containing
@@ -12,8 +14,16 @@ def mknetf(fn,mat):
 		zero strings('0') repreesenting NO equation. 
 	Output: File(fn) of node/mask equations and connections."""
 
+
 	sz = len(mat)
 	with open(fn, 'w') as outf:
+		# Write header to output file.
+		pn = os.path.basename(fn[:-4])
+		date = time.ctime()
+		outf.write("# Net file for project: {:s} \n".format(pn))
+		outf.write("# Produced by Natana.\n")
+		outf.write("# Date: {:s}\n\n".format(date))
+
 		for r in range(sz):
 			for c in range(sz):
 				mnode = '0'
