@@ -2,14 +2,16 @@
 change.log for netana
 
 version 3.2.0
-	date August 22, 2021
+	date Septiember 15, 2021
 	1) Added more numpy function calls to mkreport.py in order to no longer
-           need python module bldmat.py and matutil.py.    
+       need python module bldmat.py and matutil.py.    
 	2) Revised netana.py and plotutily.py to use computed values instead of
 	   getting the printed data in the report files. Also the project spec file
 	   name is now used as the title of the plot.
-	3) added file 'mknetf' to make a net connecting list thaty can be used
+	3) added file 'mknetf' to make a net connecting list that can be used
 	   for better documation of project.
+	4) Rewrote and renamed the wequ.py module, Now called getnet.py. 
+	5) Updated documentation regarding the xxxxx.net file usage.
 
 version 3.1.18
 	date May 30, 2017

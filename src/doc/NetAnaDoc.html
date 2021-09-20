@@ -289,53 +289,64 @@
         methods, depending on the computer platform being used.<br>
         <br>
         <h2><a class="mozTocH2" name="mozTocId106426"></a>Net Connection List</h2>
-        <big><small>&nbsp;&nbsp;&nbsp; Version 1.0.0 has added a feature that
-            allows the user to create a network connection text file that will
-            be used to fill in the grid when the "Enter Network Equations"
-            button is depressed if the ".equ" file does not exist.</small></big></div>
+        <big><small>Version 1.0.0 has added a feature that allows the user to
+            create a network connection text file that will be used to fill in
+            the grid when the "Enter Network Equations" button is depressed if
+            the ".equ" file does not exist.</small></big></div>
       <div style="text-align: left;"><big><small><br>
           </small></big></div>
-      <div style="text-align: left;"><big><small>&nbsp;&nbsp;&nbsp; Starting
-            with version 3.2.0 when the "Save Button", in the equations dialog,
-            is pressed NetAna will always write/update a "xxxxxx.net" file. The
-            "xxxxxx.net" file is provided to document the project network
-            connections. <br>
+      <div style="text-align: left;"><big><small>Starting with version 3.2.0
+            when the "Save Button", in the equations dialog, is pressed NetAna
+            will always write/update a "xxxxxx.net" file. The "xxxxxx.net" file
+            is provided to document the project network connections. <br>
           </small></big></div>
       <div style="text-align: left;"><big><small><br>
           </small></big></div>
-      <div style="text-align: left;"><big><small>&nbsp;&nbsp;&nbsp; The project
-            can be recreated using the .spec and .net files. The Net file will
-            only be used to load the equation if the corresponding xxxxxx.equ
-            file extension is renamed such as "xxxxxx.equ.bak" or deleted or
-            does not exist.</small></big></div>
+      <div style="text-align: left;"><big><small>The project can be recreated
+            using the .spec and .net files. The Net file will only be used to
+            load the equation if the corresponding xxxxxx.equ file extension is
+            renamed such as "xxxxxx.equ.bak" or deleted or does not exist.</small></big></div>
       <div style="text-align: left;"><big><small><br>
           </small></big></div>
       <div style="text-align: left;"><big><small> An example of a connection
-            file is shown below for the "BainterFilter".</small></big></div>
-      <div style="text-align: left;"><big><small>Don't be confused by the editor
-            line number in the image below:</small><br>
-        </big><br>
-        <div style="text-align: center;"><img title="ConnectionList-BainterFilter"
-            alt="BainterFilter.net" src="ConnectionList-600-net.png"><br>
-        </div>
-        &nbsp;&nbsp;&nbsp; When entering data in the first data column be sure
-        to include the symbols for the reactive components. The reactive
+            file is shown below for the "BainterFilter":</small></big></div>
+      <div style="text-align: left;"><big><small><br>
+          </small></big></div>
+      <img src="file:///home/jim/netana/netana/src/doc/BainterFilter.net.png" alt="BF.nat"
+        title="BainterFilter.net" longdesc="Bainter Filter Connection List">
+      <div style="text-align: left;"><big><small><br>
+          </small></big></div>
+      <div style="text-align: left;"><big><small><br>
+          </small></big></div>
+      <div style="text-align: left;"><big><small>Net data format is as follows:</small></big></div>
+      <div style="text-align: left;"><big><small>&nbsp;&nbsp;&nbsp; Column 1 is
+            the node or mutual node equation. Note that all mutual node
+            equations are negative, have a minus sign.</small></big></div>
+      <div style="text-align: left;"><big><small>&nbsp;&nbsp;&nbsp; Column 2 is
+            the node number.</small></big></div>
+      <div style="text-align: left;"><big><small>&nbsp;&nbsp;&nbsp; Column 3 is
+            either zero indicating a main node or a non zero number indicating a
+            mutual node number.</small></big></div>
+      <div style="text-align: left;"><big><small></small></big><br>
+      </div>
+      <div style="text-align: left;">When entering data in the first data column
+        be sure to include the symbols for the reactive components. The reactive
         component <span style="text-decoration: underline;">must</span> be
-        exposed (shown). Data may be entered in either upper or lower case.<br>
-        &nbsp;&nbsp;&nbsp; Example: R1 is in series with C1; Y1 = 1.0/R1 + C1
-        and&nbsp; Y1 is connected between node 4 and 5<br>
-        &nbsp;&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;</span>&nbsp;&nbsp;
-        Y1+C1,4,5 as long as Y1 is defined in the spec. file. Such as R1=10e3
-        and Y1=1/R1.<br>
-        &nbsp;&nbsp;&nbsp; When creating this .net file you can create a comment
-        using the "#" symbol any place in the line and the rest of the line will
-        be treated as a comment. The xxxxxxx.net file will only be used if an
-        xxxxxx.equ file does not exist. If you depress the "Save" button in the
-        Equation Dialog grid display the equation information&nbsp; will be
-        saved in the xxxxxx.equ file. As long as the xxxxxxx.equ file exists,
-        the xxxxxxxx.net file will not be used. If you edit the .net file, you
-        must then delete the respective .egu file, then the new net file will be
-        used.<br>
+        exposed (shown). Data may be entered in either upper or lower case.</div>
+      <div style="text-align: left;">&nbsp;Example: R1 is in series with C1; Y1
+        = 1.0/R1 + C1 and&nbsp; Y1 is connected between node 4 and
+        5&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+        &nbsp;Y1+C1,4,5 as long as Y1 is defined in the spec. file. Such as
+        R1=10e3 and Y1=1/R1.</div>
+      <div style="text-align: left;">When creating this .net file you can create
+        a comment using the "#" symbol any place in the line and the rest of the
+        line will be treated as a comment. The xxxxxxx.net file will only be
+        used if an xxxxxx.equ file does not exist. If you depress the "Save"
+        button in the Equation Dialog grid display the equation
+        information&nbsp; will be saved in the xxxxxx.equ file. As long as the
+        xxxxxxx.equ file exists, the xxxxxxxx.net file will not be used. If you
+        edit the .net file, you must then delete the respective .egu file, then
+        the new net file will be used.<br>
       </div>
     </div>
     <br>

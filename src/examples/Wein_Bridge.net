@@ -1,0 +1,8 @@
+# Net file for project: Wein_Bridge 
+# Produced by Natana.
+# Date: Fri Sep 17 16:46:35 2021
+
+YG+1/(R1+1/C1),1,0
+-1/(R1+1/C1),1,2
+-1/(R1+1/C1),1,1
+1/R2+C2+1/(R1+1/C1),2,0
