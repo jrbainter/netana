@@ -7,7 +7,7 @@ from  setuptools import setup, find_packages
 
 setup(
       name='netana',
-      version = '3.3.0',
+      version = '3.3.1',
       packages=find_packages(),
       zip_safe=True,
       include_package_data = True,
