@@ -1,0 +1,5 @@
+# git ingore file config file
+*.report
+test.net
+*.bak
+
