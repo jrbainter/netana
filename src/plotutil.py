@@ -2,8 +2,9 @@
 # Python Module to plot the DC/AC Network Response
 
 import os,sys,time
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-
 
 def matplot(units='Hz',ylab=None, plotdata=None):
 

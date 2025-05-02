@@ -4,12 +4,12 @@
 def getnet(fn):
 	""" This module will read a net file "fn" containing
 	components and node connection specifications. It will
-	output the matrix node equations. Format of the 'net'
-	data file example of one line:
+	output a square matrix representive of the node equations.
+	Format of the 'net'	data file example of one line:
 		c1+y1+A*ya,3,4   equation, node 3, mutual (adjacent node 4
 		A zero in the third column refers to common or ground.
 	Input: fn = filename of net file (connection list)
-	Output: square matrix (list of lists) of size equalto the number of
+	Output: square matrix (list of lists) of size equal to the number of
 	voltage nodes."""
 
 	with open(fn, 'r') as equfile:
@@ -23,7 +23,7 @@ def getnet(fn):
 			ll.append((e,n,sm))
 			if int(n) > nbnodes: nbnodes = int(n)
 
-		# Start building matrix
+		# Start building square matrix filled with '0's.
 		mat = [['0' for i in range(nbnodes)] for j in range(nbnodes)]
 		for tup in ll:
 			e,n,mn = tup

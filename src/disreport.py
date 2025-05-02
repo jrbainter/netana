@@ -7,7 +7,6 @@ from tkinter.messagebox import showerror
 class DisReport():
 	def __init__(self,parent,filename,lable=None):
 		self.parent=parent
-		self.top = parent
 		self.fn = filename
 		self.top = Toplevel(parent)
 		fn = os.path.basename(self.fn)

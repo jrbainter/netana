@@ -1,6 +1,12 @@
 
 change.log for netana
 
+version 3.3.2
+	date April 30, 2025
+	1) Changed hoe the man four buttons are disabled/emabledsuch that
+	   the user can not go back to the previous button - avoiling plotting errors.
+    2) Added python3-pil and python3-imagetk tothe "install requires" in the setup.py file.
+
 version 3.3.1
 	date September 19, 2021
 	1) added file 'mknetf' to make a net connecting list that can be used

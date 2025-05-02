@@ -56,7 +56,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.plotbtn=ttk.Button(fm1,text='Plot Network Results',command=self.plot)
 		self.plotbtn.grid(row=1, column=1, sticky=E+W,padx=5,pady=5)
 
-		self.Quit=ttk.Button(fm1, text='Quit', command=master.destroy)
+		self.Quit=ttk.Button(fm1, text='Quit', command=fm1.quit)
 		self.Quit.grid(row=2,column=0, sticky=W,padx=5,pady=5)
 		fm1.pack(anchor=W)
 		master.bind_all('<F1>',self.helpdoc)
@@ -84,11 +84,11 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 	def getequations(self):
 		AnalizeSpec.analize(self)
 		Equations.getequ(self)
-		self.btnctrl(['!disabled','disabled','!disabled','disabled'])
+		self.btnctrl(['disabled','disabled','!disabled','disabled'])
 
 	def mkreport(self):
 		MkReport.mkreport(self)
-		self.btnctrl(['!disabled','disabled','disabled','!disabled'])
+		self.btnctrl(['disabled','disabled','disabled','!disabled'])
 
 	def plot(self):
 		if  self.AcDc == "AC" :   # Plot AC Response
@@ -100,6 +100,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 			else:
 				ylabel = 'Amps'
 			matplot(units='',ylab=ylabel, plotdata=(self.ProjectName,self.lmag))
+			self.btnctrl(['disabled','disabled','disabled','!disabled'])
 
 	def helpdoc(self,event=None):
 		prog_dir = os.path.dirname(sys.argv[0])

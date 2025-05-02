@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import ttk
 import os
-
+   
 class GridDialog():
 	def __init__(self,parent,matrix=None,size=0,title="Grid Dialog",
 		label="Equation Matrix",rowlab="Equ",collab="Node"):
@@ -12,7 +12,6 @@ class GridDialog():
 		self.top.geometry('+150+250')
 		self.top.grab_set()
 		self.parent = parent
-		self.result=None
 		self.entdict = {}
 		if matrix == None:	# Use default zero display
 			self.matrix = None
@@ -62,7 +61,8 @@ class GridDialog():
 		# Add OK and Cancel buttons
 		f4 = ttk.Frame(self.top, borderwidth=2, relief=GROOVE)
 		ttk.Button(f4, text='Save', command=self.save).pack(side=LEFT,padx=5,pady=5)
-		cb=ttk.Button(f4, text='Cancel', command=self.cancel).pack(side=LEFT,padx=5,pady=5)
+# Renove Cancel Button - no need for it lrb 4/29/2025
+###		cb=ttk.Button(f4, text='Cancel', command=self.cancel).pack(side=LEFT,padx=5,pady=5)
 		self.top.bind("<Escape>", self.cancel)
 		f4.pack(anchor=W)
 

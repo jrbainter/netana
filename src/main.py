@@ -3,6 +3,7 @@
 from tkinter import *
 from netana import *
 
+
 def main():
 	root = Tk()
 	root.title('NetAna')

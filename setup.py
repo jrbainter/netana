@@ -7,11 +7,11 @@ from  setuptools import setup, find_packages
 
 setup(
       name='netana',
-      version = '3.3.1',
+      version = '3.3.2',
       packages=find_packages(),
       zip_safe=True,
       include_package_data = True,
-      install_requires = ['pyton3-tk','matplotlib',],
+      install_requires = ['pyton3-tk','matplotlib','python3-pil','python3-imagetk'],
       entry_points = { "gui_scripts" : ["netana=main:main"]},
       scripts = ["cp-examples.sh"],
       package_data={'netana': ['examples/*', 'doc/*',

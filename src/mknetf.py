@@ -18,7 +18,7 @@ def mknetf(fn,mat):
 	sz = len(mat)
 	with open(fn, 'w') as outf:
 		# Write header to output file.
-		pn = os.path.basename(fn[:-4])
+		pn = os.path.basename(fn)
 		date = time.ctime()
 		outf.write("# Net file for project: {:s} \n".format(pn))
 		outf.write("# Produced by Natana.\n")
