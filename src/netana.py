@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 
 import tkinter.filedialog as tfd
-import webbrowser,os
+import webbrowser,os,sys
 
 from analize import AnalizeSpec
 from equations import Equations
