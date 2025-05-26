@@ -6,9 +6,9 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-def matplot(units='Hz',ylab=None, plotdata=None):
+def matplot(units,ylab,plotdata):
 
-	if ylab != None :
+	if ylab != '' :
 		matplotdc(ylab,data=plotdata)
 	else:
 		matplotac(units,data=plotdata)

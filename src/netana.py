@@ -23,6 +23,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.lfreq = []
 		self.lmag = []
 		self.lpa = []
+		self.plotdata = []
 
 	def bld_menu(self, master):
 		mBar = Menu(master, relief='groove', borderwidth=5)
@@ -92,14 +93,17 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 
 	def plot(self):
 		if  self.AcDc == "AC" :   # Plot AC Response
-			matplot(units=self.FreqUnits,ylab=None,
-				plotdata = (self.ProjectName,self.lfreq, self.lmag, self.lpa))
+			ylabel = ''
+			self.plotdata = [self.ProjectName,self.lfreq, self.lmag, self.lpa]
+			matplot(self.FreqUnits,ylabel,self.plotdata)
 		else:  # Plot DC Response
 			if self.AnalType == 'Node':
 				ylabel = 'Volts'
 			else:
 				ylabel = 'Amps'
-			matplot(units='',ylab=ylabel, plotdata=(self.ProjectName,self.lmag))
+			self.plotdata = [self.ProjectName,self.lmag]
+			units = ''
+			matplot(units,ylabel,self.plotdata)
 			self.btnctrl(['disabled','disabled','disabled','!disabled'])
 
 	def helpdoc(self,event=None):
