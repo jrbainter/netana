@@ -20,7 +20,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.bld_menu(master)
 		self.bld_widgets(master)
 		self.parent=master
-		self.lfreq = []
+		self.freg = []
 		self.lmag = []
 		self.lpa = []
 
@@ -100,7 +100,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 			else:
 				ylabel = 'Amps'
 			matplot(units='',ylab=ylabel, plotdata=(self.ProjectName,self.lmag))
-			self.btnctrl(['disabled','disabled','disabled','!disabled'])
+		self.btnctrl(['!disabled','disabled','disabled','!disabled'])
 
 	def helpdoc(self,event=None):
 		prog_dir = os.path.dirname(sys.argv[0])

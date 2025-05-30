@@ -10,9 +10,6 @@ class MkReport():
 	"""
 	def __init_(self,parent):
 		self.parent = parent
-		self.lfreq = []  # Save values for plotting
-		self.lmag = []
-		self.lpa = []
 
 	def mkreport(self):
 		try:
@@ -21,6 +18,9 @@ class MkReport():
 		except TypeError:
 			self.showerror('Error','VG must be of type float')
 
+		self.lfreq = []  # Save values for plotting
+		self.lmag = []
+		self.lpa = []
 		self.AcDc = 'DC'
 		for key in self.NetDict:
 			if key[0] in ['L','C']: self.AcDc='AC'
