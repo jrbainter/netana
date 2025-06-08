@@ -13,7 +13,7 @@ setup(
       include_package_data = True,
 #      install_requires = ['python3-tk','python3-matplotlib','python3-pil',
 #	  'python3-pil.imagetk', 'python3-numpy'],
-      entry_points = { "gui_scripts" : ["netana=main"]},
+      entry_points = { "gui_scripts" : ["netana=netana:main"]},
       scripts = ["cp-examples.sh"],
       package_data={'netana': ['examples/*', 'doc/*',
         'netana-3.2.0-md5sums', 'netana.desktop', 'license', 'change.log', 'copyright' ]},
