@@ -135,4 +135,4 @@ def main():      # NetAna startup function
 
 
 if __name__ == "__main__" :
-	main()
+	NetAva.main()
