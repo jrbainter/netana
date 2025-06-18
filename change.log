@@ -1,6 +1,12 @@
 
 change.log for netana
 
+version 3.3.3
+	date June 18, 2025
+	1) changed name of main.py to start-netana.py
+	2) fixed problem with going back to selecting
+	a newspec file with having to quit Netana.
+	3) Changed from setup.py to project.toml.
 version 3.3.2
 	date April 30, 2025
 	1) Changed hoe the man four buttons are disabled/emabledsuch that

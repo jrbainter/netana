@@ -126,13 +126,3 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.plotbtn.state([blist[3]])
 
 
-def main():      # NetAna startup function
-	root = Tk()
-	root.title('NetAna')
-	root.geometry('+100+200')
-	app = NetAna(root)
-	root.mainloop()
-
-
-if __name__ == "__main__" :
-	NetAva.main()
