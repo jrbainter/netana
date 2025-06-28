@@ -1,8 +1,10 @@
+#! /usr/bin/env python3
+
 from tkinter import *
 from tkinter import ttk
 
 import tkinter.filedialog as tfd
-import webbrowser,os,sys
+import webbrowser,os,sys,shutil
 
 from analize import AnalizeSpec
 from equations import Equations
@@ -17,6 +19,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		options['filetypes']=[('text files', '.txt')]
 		options['parent']=master
 		options['title']='Get File Name'
+		options['initialdir'] = os.path.expanduser('~')+'/netana-examples'
 		self.bld_menu(master)
 		self.bld_widgets(master)
 		self.parent=master
@@ -125,4 +128,36 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.analbtn.state([blist[2]])
 		self.plotbtn.state([blist[3]])
 
+	def main():
+		root = Tk()
+		root.title('NetAna')
+		# Center window on screen
+		width = root.winfo_screenwidth()
+		height = root.winfo_screenheight()
+		root.geometry(f'+{width//2}+{height//3}')
+		root.resizable(False,False)
+#		root.geometry('+100+200')
+		app = NetAna(root)
+		root.mainloop()
+
+
+	def cpdir():
+		""" Define the source directoy and the destination directory
+		    (userr's home directory). Copy 'netana-examples' to users
+			home directory if it does not already exist.
+		"""
+		source_dir = 'netana-examples'
+		dest_dir = os.path.expanduser('~') + '/' + source_dir
+		# Coyy the directory if it does not exist in users home directory
+		if not os.path.exists(dest_dir):
+			shutil.copytree(source_dir, dest_dir)
+
+
+if __name__ == "__main__":
+	from netana import NetAna
+	p1 = NetAna
+	# copy netana-examples dir to Home dir
+	p1.cpdir()
+	# start gui
+	p1.main()
 

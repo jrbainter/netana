@@ -1,11 +1,21 @@
 
 change.log for netana
 
+version 3.3.4
+	date June 27, 2025
+	1) Updated NetAna.html file. Many spelling errors.
+
+	date June 25, 2025
+	1) File dialod now opens to 'netana-exemple' directory.
+	2) 'netana-example' directory copied to user 'home' directory.
+	3) removed 'start-netana.py' file.
+	4) change root.geometry to move main window to approx. center of screen.
+
 version 3.3.3
 	date June 18, 2025
 	1) changed name of main.py to start-netana.py
 	2) fixed problem with going back to selecting
-	a newspec file with having to quit Netana.
+	   a newspec file with having to quit Netana.
 	3) Changed from setup.py to project.toml.
 version 3.3.2
 	date April 30, 2025

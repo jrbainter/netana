@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=netana
 Comment=netana
-Exec=netana/start-netana.py
+Exec=netana:NetAna.main
 Icon=netana/doc/NetAna-t.png
 Terminal=false
 Type=Application

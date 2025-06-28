@@ -4,22 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "netana"
-version = "3.3.3"
+version = "3.3.4"
 dependencies = [
-	"python3-tk",
-	"python3-matplotlib",
-	"pythom3-pil",
-	"python3-pil.imagetk",
-	"python3-numpy",
+	"tkinter-gl",
+	"matplotlib",
+	"Pillow",
+	"numpy",
 ]
-requites-python = ">= 3.8"
-autthors = [
+requires-python = ">= 3.8"
+authors = [
 	{name = "James R. Bainter", email = "bainter8326@gmail.com"},
 ]
 description = "Electronic Network Analyzer"
 readme = "README.md"
 license = "MIT AND (Apache-2.0 OR BSD-2-Clause)"
-keywords = "electronic network circuit node mash analysis"
+keywords = ["electronic network", "circuit", "node", "mash", "analysis"]
 classifiers = [
 	"Development Status :: 5 Production Stable",
 	"Intended Audience :: Hardware Engineers and EE students",
@@ -29,10 +28,5 @@ classifiers = [
 [project.urls]
 repository = "https://githob.com/jrbainter/netana.git"
 
-[project-scripts]
-cp-example.sh = " copy examples to home directory"
-
-[project.entry-points, "metana"]
-start-netana = "start-netana"
-
-
+[project.gui-scripts]
+netana = "netana:NetAna.main"

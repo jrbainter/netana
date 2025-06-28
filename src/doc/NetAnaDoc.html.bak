@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html dir="ltr" lang="en-us">
   <head>
-    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     <title>NetAna Documentation</title>
     <meta name="generator" content="Bluefish 2.0.2">
     <style type="text/css">
@@ -15,35 +15,29 @@
   </head>
   <body>
     <div style="text-align: center;">
-      <h1><img title="NetAna Image" alt="NetAna-t.png" src="NetAna-t.png">
-        <center>NetAna Documentation<br>
-          <h6>revisied 27 June&nbsp; 2025</h6>
-        </center>
+      <h1><a class="mozTocH1" name="mozTocId348568"></a>
+        <center>NetAna Documentation<br></center>
       </h1>
       <hr style="width: 100%; height: 2px;">
       <div style="text-align: left;"><br>
         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <br>
         <p>NetAna is a program developed to solve sets of linear equations using
           matrix algebra to solve electrical network voltage and current values.
-          Python3 and Matplotlib were used to create the multi-platform program.
-          The GUI was handcrafted using Python's built in Tkinter.<br>
+          Python, and Python-Matplot were used to create the multi-platform
+          program. The GUI was handcrafted using Python's built in Tkinter.<br>
         </p>
         <p>NetAna is used to analyze DC and AC networks using either Node or
           Mesh equations. NetAna uses a network specification (component values)
           and driving voltages or currents and in the case of an AC network the
-          frequency range. The "spec" file text <b>must be valid Python3 syntax</b>
-          as it is going to executed by Python3. .Any text editor can be used to
-          create, edit, and save the network specification file. The "spec."
-          file must be saved with an ".txt" extension. Once the specification
-          filename is selected, a&nbsp; gird table (spreadsheet like) will
-          popup. Enter the network equations into this matrix (grid table). This
-          matrix is “Submitted”, stored in a file. also see <a href="Net%20Connection%20List">Net
-            Connection List</a> at the end of this document. The network is then
-          analyzed producing an analysis report displayed in a pop up window.
-          Next a plot of the gain and phase angle can be produced. This plot can
-          also be saved to a file ( by clicking on&nbsp; far left icon ) at
-          bottom of plot popup window) providing the user with a complete report
-          and plot for documenting the performance of the network.<br>
+          frequency range. Any text editor can be used to create, edit, and save
+          the network specification file. The "spec." file must be saved with an
+          ".txt" extension. Once the specification filename is selected, the
+          network equations are entered into a matrix (grid table). This matrix
+          is “Submitted”, stored in a file. The network is then analyzed
+          producing an analysis report displayed in a pop up window. Next a plot
+          of the gain and phase angle can be produced. This plot can also be
+          saved to a file providing the user with a complete report and plot for
+          documenting the performance of the network.<br>
           <br>
         </p>
         <ul class="readonly" id="mozToc">
@@ -84,16 +78,16 @@
           Keywords</h2>
         <p>The following words/symbols are used in defining the network/circuit
           specification. The specification in typed into the program editor or
-          your favorite text edited and saved with the ".txt" extension.
-          &nbsp;The specification may be typed in either lowercase or uppercase.
-          Python is case sensitive but, this program scans the specification
-          file and converts the text to uppercase before evaluating the
-          specification. The reserved words below are shown in upper case even
-          though they can be entered in lower case.</p>
+          your favorite text edited and saved with the ".txt" extendsion.
+          &nbsp;The specificatioon may be typed in either lowercase or
+          uppercase. Python is case senesitve but, this program scans the
+          specification file and converts the text to uppercase before
+          evaluating the specification. The reserved words below are shown in
+          upper case even though they can be entered in lower case.</p>
         <p><br>
         </p>
         <table style="width: 568px; height: 88px; text-align: left; margin-left: auto; margin-right: auto;"
-          cellpadding="2" cellspacing="2" border="1">
+          cellspacing="2" cellpadding="2" border="1">
           <tbody>
             <tr>
               <td style="text-align: center;">NODES</td>
@@ -124,7 +118,7 @@
         <h2><a class="mozTocH2" name="mozTocId78073"></a>Keyword Usage</h2>
         <h4><a class="mozTocH4" name="mozTocId280126"></a>NODES</h4>
         <div style="margin-left: 40px;">This word is required to be defined for
-          node analysis and species the number of nodes in the network. Example
+          node analysis and specifes the number of nodes in the network. Example
           "nodes = 5" to specify a five node network.</div>
         <br>
         <h4><a class="mozTocH4" name="mozTocId461940"></a>MASHS</h4>
@@ -145,7 +139,7 @@
         <br>
         <div style="margin-left: 40px;">This word defines the current generator
           value when doing node analysis. When 'IG' is used, the program will do
-          node analysis. Example: "Ig = 0.500' will specify a 500 milliampere
+          node analysis. Example: "Ig = 0.500' will specify a 500 millampere
           current generator.<br>
         </div>
         <h4><a class="mozTocH4" name="mozTocId711916"></a>L*</h4>
@@ -172,7 +166,7 @@
         <br>
         <h4><a class="mozTocH4" name="mozTocId663383"></a>VGLIST</h4>
         <br>
-        <div style="margin-left: 40px;">Used to define multiple voltage sources
+        <div style="margin-left: 40px;">Used to define mulitple voltage sources
           (mash analysis). Example: vglist = [e1, e2, 0, 0, e2]<br>
           This defines two voltage sources driving three mashs ( mashs 1, 2, and
           5) where mashs are the current loops.<br>
@@ -205,12 +199,12 @@
           used the define the output of the analysis program. Example; TF =
           ("(i2-i3) * R3", "Volts") defines, for mash analysis, the voltage
           across&nbsp; resistor&nbsp; R3. During analysis all mash currents are
-          solved and during node analysis all node voltage are solved. The
-          second parameter passed to the TF is a label, used for&nbsp; DC
-          analysis only, used in writing the output report. If in the above
-          example the output to be in millivolts instead of volts, the TF is
-          written as TF = ("(i2-i3)*R3*1e3"," mv") note that the first parameter
-          must be scaled by 1e3 (1000) to get millivolts.<br>
+          solved and during node anlysis all node voltage are solved. The second
+          parameter passed to the TF is a label, used for&nbsp; DC analysis
+          only, used in writing the output report. If in the above example the
+          output to be in millivolts instead of volts, the TF is written as TF =
+          ("(i2-i3)*R3*1e3"," mv") note that the first parameter must be scaled
+          by 1e3 (1000) to get millivolts.<br>
         </div>
         <br>
         <h4><a class="mozTocH4" name="mozTocId856985"></a>GOALS</h4>
@@ -226,7 +220,7 @@
         <h4><a class="mozTocH4" name="mozTocId870174"></a>GOAL?</h4>
         <br>
         <div style="margin-left: 40px;">GOAL? means Goal1......GoalN. where N is
-          defined by keyword GOALS above.<br>
+          defined by keywprd GOALS above.<br>
           Assuming Node Analysis:</div>
         <div style="margin-left: 40px;"> Example: Goal1 = ("(e1-e2) / R2 *
           1000", "ma.")&nbsp; # find current in R2<br>
@@ -238,7 +232,7 @@
         <div style="margin-left: 40px;"> </div>
         <h2><a class="mozTocH2" name="mozTocId365045"></a>Program Usage</h2>
         Once the program is running, a frame with a top menu bar and four
-        buttons will be visible to the user.&nbsp; Depress the "Enter Spec. File
+        buttons will be visible to the user.&nbsp; Depress the "Enter Sepc. File
         Name" button and select the "Spec." file.&nbsp; The 'spec'
         (specification) file is a plain text file with an extension '.txt' that
         contains the program keywords. See the included Demo files in the
@@ -252,7 +246,7 @@
         Therefore, all the capacitor and inductance symbols must be entered with
         their C's and L's. If this network has been analyzed before, the grid
         will come up with the network equations already entered as used in the
-        last run. The equations can be edited any time this grid frame is open.
+        last run. The equation can be edited any time this grid frame is open.
         When all equations have been entered, depress the 'Submit' button on the
         grid dialog frame. This will save the equations in a file with an '.equ'
         extension.<br>
