@@ -1,10 +1,11 @@
-#! /usr/bin/env python3
+#!/bin/env python3
 
 from tkinter import *
 from tkinter import ttk
 
 import tkinter.filedialog as tfd
 import webbrowser,os,sys,shutil
+from importlib_resources import files
 
 from analize import AnalizeSpec
 from equations import Equations
@@ -105,21 +106,19 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 			else:
 				ylabel = 'Amps'
 			self.plotdata = [self.ProjectName,self.lmag]
-			units = ''
+			units = ""
 			matplot(units,ylabel,self.plotdata)
-			self.btnctrl(['disabled','disabled','disabled','!disabled'])
-			matplot(units='',ylab=ylabel, plotdata=(self.ProjectName,self.lmag))
 		self.btnctrl(['!disabled','disabled','disabled','!disabled'])
 
 	def helpdoc(self,event=None):
-		prog_dir = os.path.dirname(sys.argv[0])
-		doc = os.path.join(prog_dir, "doc/NetAnaDoc.html")
-		webbrowser.open(doc,new=2)
+		fp = str(files("netana").joinpath("doc/NetAnaDoc.html"))
+		firefox_browser = webbrowser.get('firefox')
+		webbrowser.open(fp)
 
 	def about(self,event=None):
-		prog_dir = os.path.dirname(sys.argv[0])
-		doc = os.path.join(prog_dir, "doc/about.html")
-		webbrowser.open(doc,new=2)
+		fp = str(files("netana").joinpath("doc/about.html"))
+		firefox_browser = webbrowser.get('firefox')
+		webbrowser.open(fp)
 
 	def btnctrl(self,blist):
 		assert len(blist) == 4
@@ -136,7 +135,6 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		height = root.winfo_screenheight()
 		root.geometry(f'+{width//2}+{height//3}')
 		root.resizable(False,False)
-#		root.geometry('+100+200')
 		app = NetAna(root)
 		root.mainloop()
 
@@ -155,7 +153,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 
 if __name__ == "__main__":
 	from netana import NetAna
-	p1 = NetAna
+	p1 = NetAna()
 	# copy netana-examples dir to Home dir
 	p1.cpdir()
 	# start gui
