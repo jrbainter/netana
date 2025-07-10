@@ -1,0 +1,15 @@
+# file: config.toml   date: 10 July 2025
+#
+# This is the configuration file for "netana".
+# Their is not much to configure in netana.
+# The only setting is the the inital directory
+# location where the filedialog will point to.
+# Initially this is set to point to "netana-files"
+# in the users Home directory. The "netana-examples"
+# are located in directory "netana-files"
+# NOTE: you could make a directory in "netana-files"
+# for your project to make it easy for netana to point
+# near ypor project.
+#
+[netana]
+directory = netana-files

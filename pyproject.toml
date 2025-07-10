@@ -17,7 +17,8 @@ authors = [
 ]
 description = "Electronic Network Analyzer"
 readme = "README.md"
-license = "MIT AND (Apache-2.0 OR BSD-2-Clause)"
+#license = "MIT AND (Apache-2.0 OR BSD-2-Clause)"
+license = "GPL-3.0-or-later"
 keywords = ["electronic network", "circuit", "node", "mash", "analysis"]
 classifiers = [
 	"Development Status :: 5 Production Stable",
