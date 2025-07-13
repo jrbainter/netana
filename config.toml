@@ -9,7 +9,7 @@
 # are located in directory "netana-files"
 # NOTE: you could make a directory in "netana-files"
 # for your project to make it easy for netana to point
-# near ypor project.
+# near your project.
 #
 [netana]
 directory = netana-files

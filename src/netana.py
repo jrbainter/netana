@@ -6,6 +6,7 @@ from tkinter import ttk
 import tkinter.filedialog as tfd
 import webbrowser,os,sys,shutil
 from importlib_resources import files
+import toml
 
 from analize import AnalizeSpec
 from equations import Equations
@@ -20,7 +21,7 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		options['filetypes']=[('text files', '.txt')]
 		options['parent']=master
 		options['title']='Get File Name'
-		options['initialdir'] = os.path.expanduser('~')+'/netana-examples'
+#		options['initialdir'] = os.path.expanduser('~')+'/netana-examples'
 		self.bld_menu(master)
 		self.bld_widgets(master)
 		self.parent=master
@@ -127,7 +128,47 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		self.analbtn.state([blist[2]])
 		self.plotbtn.state([blist[3]])
 
+
+	def put-config();
+		"""Copy the config.toml file into the users
+	       /etc directory.
+		"""
+		source_file = "netana/config.toml"
+		dest_head = "/etc/"
+		dest_path = dest_head + source_file
+		# Coyy the config.toml file into the users /etc
+		# if it does not exist.
+		if not os.path.exists(dest_path):
+			shutil.copytree(source_dir, dest_head)
+
+
+	def cpdir():
+		""" Define the source directory and the destination directory
+		    (userr's home directory). Copy 'netana-examples' to users
+			home directory if it does not already exist. Also initiialze
+			the filedislog to open pointing to the "netana-examples.
+		"""
+		source_dir = 'netana-examples'
+		# Using toml find the dest-dir for the netana-examples
+		with open("/etc/netana/config.toml", 'r') as f
+			config = toml.load(f)
+		dest_dir = config[netana][directory]
+		# Get the users home path.
+		home_path = os.path.expamduser('~')
+		full_path = home_path + '/' + dest_dir
+		# Coyy the directory if it does not exist in users home directory
+		if not os.path.exists(full_path):
+			shutil.copytree(source_dir, full_path)
+		# Set filedialog to point to the "netana=examples"
+		self.opt[initaldir] = full_path
+
 	def main():
+		""" Put the config.toml file in the users
+		/etc directory. """
+		put-config()
+		""" Put the "netana-examplews" in the
+		users home directory. """
+		cpdir()
 		root = Tk()
 		root.title('NetAna')
 		# Center window on screen
@@ -139,23 +180,9 @@ class NetAna(Equations, AnalizeSpec, MkReport):
 		root.mainloop()
 
 
-	def cpdir():
-		""" Define the source directoy and the destination directory
-		    (userr's home directory). Copy 'netana-examples' to users
-			home directory if it does not already exist.
-		"""
-		source_dir = 'netana-examples'
-		dest_dir = os.path.expanduser('~') + '/' + source_dir
-		# Coyy the directory if it does not exist in users home directory
-		if not os.path.exists(dest_dir):
-			shutil.copytree(source_dir, dest_dir)
-
-
 if __name__ == "__main__":
 	from netana import NetAna
 	p1 = NetAna()
-	# copy netana-examples dir to Home dir
-	p1.cpdir()
 	# start gui
 	p1.main()
 
